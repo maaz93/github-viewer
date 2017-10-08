@@ -8,19 +8,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "hisivasankar",
+      username: "maaz93",
       userData: {},
       userRepos: [],
-      perPage: 5
+      perPage: 10
     }
   }
 
   // Get user data from GitHub
   getUserdata() {
     $.ajax({
-      url: `https://api.github.com/users/${this.state.username}?
-      client_id=${this.props.clientId}&
-      client_secret=${this.props.clientSecret}`,
+      url: `https://api.github.com/users/${this.state.username}?client_id=${this.props.clientId}&client_secret=${this.props.clientSecret}`,
       dataType: "json",
       cache: false,
       success: data => {
@@ -35,14 +33,33 @@ class App extends Component {
     });
   }
 
+  // Get user repos from GitHub
+  getUserRepos() {
+    $.ajax({
+      url: `https://api.github.com/users/${this.state.username}/repos?per_page=${this.state.perPage}&client_id=${this.props.clientId}&client_secret=${this.props.clientSecret}&sort=created`,
+      dataType: "json",
+      cache: false,
+      success: data => {
+        this.setState({
+          userRepos: data,
+        })
+      },
+      error: (xhr, status, error) => {
+        this.setState({username: null});
+        console.log(error);
+      }
+    });
+  }
+
   componentDidMount() {
     this.getUserdata();
+    this.getUserRepos();
   }
 
   render() {
     return (
       <div>
-        <Profile userData = {this.state.userData}/>
+        <Profile {...this.state} />
       </div>
     );
   }
