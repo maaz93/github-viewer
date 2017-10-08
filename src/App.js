@@ -8,6 +8,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.state = {
       username: "maaz93",
       userData: {},
@@ -68,7 +69,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Search onFormSubmit={this.handleFormSubmit.bind(this)}/>
+        <Search onFormSubmit={this.handleFormSubmit}/>
         <Profile {...this.state} />
       </div>
     );
