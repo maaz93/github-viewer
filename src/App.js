@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery';
-import Profile from "./github/Profile"
+import Profile from "./github/Profile";
+import Search from "./github/Search";
 
 class App extends Component {
 
@@ -51,7 +52,15 @@ class App extends Component {
     });
   }
 
+  handleFormSubmit(username) {
+    this.setState({username: username}, this.fetchDetails);
+  }
+
   componentDidMount() {
+    this.fetchDetails();
+  }
+
+  fetchDetails() {
     this.getUserdata();
     this.getUserRepos();
   }
@@ -59,6 +68,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Search onFormSubmit={this.handleFormSubmit.bind(this)}/>
         <Profile {...this.state} />
       </div>
     );
