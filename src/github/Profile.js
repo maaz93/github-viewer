@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RepoList from "./RepoList";
 
 class Profile extends Component {
 
@@ -40,6 +41,10 @@ class Profile extends Component {
               <a className="btn btn-primary" target="_blank" href={this.props.userData.html_url}>Visit Profile</a>
             </div>
           </div>
+
+          <hr />
+          <h3>User Repositories</h3>
+          <RepoList userRepos={this.props.userRepos} />
         </div>
       </div>
     );
