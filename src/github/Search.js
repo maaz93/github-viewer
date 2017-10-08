@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 class Search extends Component {
 
+  constructor(props) {
+  	super(props);
+  	this.onSubmit = this.onSubmit.bind(this);
+  }
 
   onSubmit(e) {
   	e.preventDefault();
@@ -15,10 +19,9 @@ class Search extends Component {
   }
 
   render() {
-    const {repo} = this.props;
     return (
       <div>
-      	<form onSubmit={this.onSubmit.bind(this)}>
+      	<form onSubmit={this.onSubmit}>
       		<label>Search Github Users</label>
       		<input type="text" ref="username" className="form-control" />
       	</form>
