@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
-import './App.css';
-import $ from 'jquery';
+import React, { Component } from "react";
+import $ from "jquery";
+import PropTypes from "prop-types";
+
+import "./App.css";
+
 import Profile from "./github/Profile";
 import Search from "./github/Search";
 
@@ -77,8 +80,8 @@ class App extends Component {
 }
 
 App.propTypes = {
-  clientId: React.PropTypes.string,
-  clientSecret: React.PropTypes.string
+  clientId: PropTypes.string,
+  clientSecret: PropTypes.string
 };
 
 App.defaultProps = {

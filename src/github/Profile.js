@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import RepoList from "./RepoList";
 
 class Profile extends Component {
@@ -14,6 +14,7 @@ class Profile extends Component {
           <div className="row">
             <div className="col-md-4">
               <img
+                alt="Thumbnail for GitHub avatar"
                 className="thumbnail"
                 style={{width: "100%"}}
                 src={userData.avatar_url}
