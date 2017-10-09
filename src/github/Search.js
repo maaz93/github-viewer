@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Search extends Component {
 
@@ -20,7 +20,7 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
+      <div className="app-search">
       	<form onSubmit={this.onSubmit}>
       		<label>Search Github Users</label>
       		<input type="text" ref="username" className="form-control" />
